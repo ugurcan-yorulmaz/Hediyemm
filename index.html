@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aşk Şiiri</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+        font-family: "Open Sans", sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        flex-direction: column;
+        text-align: center;
+        overflow-x: hidden;
+        padding: 2rem;
+      }
+
+      h1 {
+        font-size: 2rem;
+        color: #fff;
+        margin-bottom: 1rem;
+      }
+
+      #poem {
+        font-size: 1.1rem;
+        color: #fff;
+        padding: 1rem;
+        line-height: 1.6;
+        white-space: pre-line;
+        animation: fadeIn 1s ease-in-out;
+        max-width: 600px;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      button {
+        padding: 0.7rem 1.5rem;
+        font-size: 1rem;
+        border: none;
+        border-radius: 25px;
+        background-color: #fff;
+        color: #ee9ca7;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin-top: 1rem;
+      }
+
+      button:hover {
+        background-color: #ffdde1;
+      }
+
+      .hearts {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: -1;
+      }
+
+      .hearts span {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background: red;
+        transform: rotate(45deg);
+        animation: float 10s infinite;
+      }
+
+      .hearts span::before,
+      .hearts span::after {
+        content: "";
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background: red;
+        border-radius: 50%;
+      }
+
+      .hearts span::before {
+        top: -10px;
+        left: 0;
+      }
+
+      .hearts span::after {
+        left: -10px;
+        top: 0;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(100vh) rotate(0deg);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-10vh) rotate(360deg);
+          opacity: 0;
+        }
+      }
+
+      @media screen and (max-width: 480px) {
+        h1 {
+          font-size: 1.5rem;
+        }
+
+        #poem {
+          font-size: 1rem;
+        }
+
+        button {
+          font-size: 0.9rem;
+          padding: 0.6rem 1.2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Bunlar Senin içinnnn 💖</h1>
+    <div id="poem">Bir şiir için butona tıkla...</div>
+    <button onclick="showRandomPoem()">Bir Şiir Göster</button>
+    <button onclick="document.getElementById('music').play()">
+
+    <div class="hearts">
+      <span style="left: 10%; animation-delay: 0s"></span>
+      <span style="left: 20%; animation-delay: 2s"></span>
+      <span style="left: 30%; animation-delay: 4s"></span>
+      <span style="left: 40%; animation-delay: 1s"></span>
+      <span style="left: 50%; animation-delay: 3s"></span>
+      <span style="left: 60%; animation-delay: 5s"></span>
+      <span style="left: 70%; animation-delay: 6s"></span>
+      <span style="left: 80%; animation-delay: 7s"></span>
+      <span style="left: 90%; animation-delay: 8s"></span>
+    </div>
+
+    <audio id="music" loop>
+      <source
+        src="https://dl.dropboxusercontent.com/scl/fi/y7l5ch2n9cbx8m1z7hivz/Ojos-Tristes.mp3?rlkey=s9cx5srx7yivz3w9ukbn4phn1&dl=0"
+        type="audio/mpeg"
+      />
+      Tarayıcınız ses etiketini desteklemiyor.
+    </audio>
+
+    <script>
+      const poems = [
+        `Ben sana mecburum bilemezsin
+Adını mıh gibi aklımda tutuyorum
+Büyüdükçe büyüyor gözlerin
+Ben sana mecburum bilemezsin – Attilâ İlhan`,
+
+        `Kara toprak dost olmuş canıma
+Sevdayla dolmuş her yanıma
+Bir tek dileğim var senden
+Gönlümden silinme sakın – Âşık Veysel`,
+
+        `Gözlerimden süzülen yaşlarda sen
+Her şiirin her satırında sen
+Aşk denince dudaklarımda sen
+Yüreğimde sönmeyen bir ateşsin – Cemal Süreya`,
+
+        `Bir bakışın yeter bana
+Bir kelimen yeter
+Geri kalan her şey
+Sadece sessizliktir – Attilâ İlhan`,
+
+        `Bakışların bir nehir gibi akar
+Kalbime her an bir sevda akar
+Bir gülüşün yeter bana inan
+Sensizlik bir ömür yakar – Can Yücel`,
+
+        `Bir gece vakti seni düşündüm
+Yıldızlar bile mahcup oldu
+Kalbim usulca fısıldadı adını
+Ve şiire dönüştü her soluk – Turgut Uyar`,
+
+        `Aşkınla tutuşan yüreğimde
+Bir kor gibi yanar adın
+Sensiz geçen her dakika
+Bir asır gibi ağır – Sezai Karakoç`,
+
+        `Bir ömür yazsam seni
+Her kelime aşk olur
+Her mısra bir nefesin
+Her hece bir bakışın – Edip Cansever`,
+
+        `Geceleri sevdim seninle
+Çünkü gece senin gibi gizemli
+Kalbim bir kıyıysa sessiz
+Sen dalga dalga gelirsin – Behçet Necatigil`,
+
+        `Yüzünde gül açınca bahar gelir
+Kalbime umut düşer
+Yıldızlar seninle parlar
+Ben seninle çoğalırım – Ahmet Arif`,
+
+        `Gözlerin gözlerime değince
+Felaketim olurdu ağlardım
+Beni sevmiyordun biliyordum
+Bir sevdiğin vardı duyuyordum – Cemal Süreya`,
+
+        `Ben sende tutuklu kaldım
+Büyüdükçe büyüyordu içimde
+Ne bir kapı ne bir pencere
+Bir aşk doluyordu geceme – Attilâ İlhan`,
+
+        `Kırık dökük bir sevda bu
+Yarım kalmış bir mısra
+Sensizliğe tutunmaya çalışan
+Bir şairin gözyaşı – Turgut Uyar`,
+
+        `Ayrılık küçük sevgileri öldürürmüş
+Büyük sevgileri ise daha da büyütürmüş
+Tıpkı rüzgarın mumu söndürüp
+Ateşi körüklediği gibi – Mevlana`,
+
+        `Sensiz her yer karanlık
+Gönlümün ışığı senmiş
+Adını her andığımda
+Kalbim yeniden doğar – Karacaoğlan`,
+
+        `Sevdanla yanar içim
+Bir yangın ki dinmez
+Gözlerin uzaklarda
+Yüreğim sende tutsak – Âşık Mahzuni Şerif`,
+
+        `Adını andığım an
+Yüreğim sızlar
+Sana dokunamamak
+İçimi kanatır – Neyzen Tevik`,
+
+        `Sen gülümse yeter
+Bahar gelir her yere
+Gözlerinle ısınır
+Bu üşüyen şehir – Orhan Veli`,
+
+        `Yalnızlık bir çığlıktır
+Sensizlik bir yangın
+Aşkın bir suskunluk
+Ve ben, içinde kaybolan – Edip Cansever`,
+
+        `Gel bir şiir ol bende
+Her hecen sevda dolu
+Kalbimde yankılanan
+Bir ömürlük melodi – Turgut Uyar`,
+      ];
+
+      function showRandomPoem() {
+        const poemElement = document.getElementById("poem");
+        const randomPoem = poems[Math.floor(Math.random() * poems.length)];
+        poemElement.innerHTML = randomPoem;
+        poemElement.style.animation = "none";
+        void poemElement.offsetWidth;
+        poemElement.style.animation = "fadeIn 1s ease-in-out";
+      }
+    </script>
+  </body>
+</html>
